@@ -6,7 +6,7 @@
 /*   By: ljustici <ljustici@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 12:52:17 by ljustici          #+#    #+#             */
-/*   Updated: 2022/07/13 18:00:54 by ljustici         ###   ########.fr       */
+/*   Updated: 2022/07/20 12:27:27 by ljustici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_putchar(char c)
 {
-	write(1, &c, 1);
+	ft_putchar_fd(c, 1);
 	return (1);
 }
 
@@ -63,30 +63,6 @@ int	ft_printf(char const *format, ...)
 			length += ft_putchar(format[i]);
 		i++;
 	}
+	va_end(args);
 	return (length);
 }
-
-/*int main()
-{
-	int a;
-	int len, z;
-	unsigned int h;
-	char c;
-	char *str="hola";
-	int d= 5;
-	//long min = -9223372036854775808;
-	
-	h = 7896525;
-	c = 's';
-	a=-234;
-	len = ft_printf("A es igual a %i. %% El carácter es %c. La palabra es %s,
-			el decimal es %u y %%. U: %u, hex: %X, Pt: %p", a, c, str, d, h, h,
-			&h);
-	printf("\nA es igual a %i. %% El carácter es %c. La palabra es %s,
-			el decimal es %u y %%. U: %u, hex: %X, Pt: %p\nlen es %i \n", a, c,
-			str, d, h, h, &h, len);
-	z = ft_printf("\n%x", 9223372036854775807LL);
-	ft_printf("\n%i", z);
-	z = printf("\n%x", 9223372036854775807LL);
-	printf("\n%i", z);
-}*/

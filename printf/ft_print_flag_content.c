@@ -6,7 +6,7 @@
 /*   By: ljustici <ljustici@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 12:18:20 by ljustici          #+#    #+#             */
-/*   Updated: 2022/07/13 18:00:09 by ljustici         ###   ########.fr       */
+/*   Updated: 2022/07/14 11:41:52 by ljustici         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,34 +18,25 @@ int	ft_putstr(char *str)
 
 	if (!str)
 	{
-		write(1, "(null)", 6);
-		return (6);
+		ft_putstr_fd("(null)", 1);
+		n = 6;
 	}
-	n = 0;
-	while (str[n] != '\0')
-		n++;
-	write(1, str, n);
+	else
+	{
+		ft_putstr_fd(str, 1);
+		n = ft_strlen(str);
+	}
 	return (n);
 }
 
 int	ft_putnbr(int n)
 {
-	int	length;
+	int		length;
+	char	*str;
 
-	length = 0;
-	if (n == -2147483648)
-		length = ft_putstr("-2147483648");
-	else
-	{
-		if (n < 0)
-		{
-			length += ft_putchar('-');
-			n *= -1;
-		}
-		if (n >= 10)
-			length += ft_putnbr(n / 10);
-		length += ft_putchar((n % 10) + '0');
-	}
+	str = ft_itoa(n);
+	length = ft_putstr(str);
+	free(str);
 	return (length);
 }
 
